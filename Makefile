@@ -9,13 +9,15 @@ create_k8s_cluster:
 delete_k8s_cluster:
 	kind delete cluster --name pleo
 
-build:
+build_and_push:
 	# Build invoice-app
 	docker build -t ${REGISTRY}/invoice-app -f invoice-app/Dockerfile ./invoice-app
-	# Push ${REGISTRY}/invoice-app
-	docker push ${REGISTRY}/invoice-app
 
 	# Build payment-provider
 	docker build -t ${REGISTRY}/payment-provider -f payment-provider/Dockerfile ./payment-provider
+
+	# Push ${REGISTRY}/invoice-app
+	docker push ${REGISTRY}/invoice-app
+
 	# Push ${REGISTRY}/payment-provider
 	docker push ${REGISTRY}/payment-provider
