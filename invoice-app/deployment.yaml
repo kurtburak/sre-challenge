@@ -55,3 +55,16 @@ spec:
   selector:
     app: invoice-app
   type: NodePort
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoice-app
+spec:
+  maxReplicas: 10
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoice-app
+  targetCPUUtilizationPercentage: 80
