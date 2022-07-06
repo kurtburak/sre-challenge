@@ -17,6 +17,9 @@ spec:
       - name: main
         image: localhost:5000/pleo/invoice-app:latest
         imagePullPolicy: Always
+        env:
+        - name: PAYMENT_PROVIDER_EP
+          value: "http://payment-provider:8082/payments/pay"
         ports:
         - containerPort: 8081
         resources:
