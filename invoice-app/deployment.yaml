@@ -26,6 +26,17 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        livenessProbe:
+          exec:
+            command:
+            - ps
+            - aux
+            - "|"
+            - grep
+            - ./app
+        readinessProbe:
+          tcpSocket:
+            port: 8081
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
