@@ -17,7 +17,23 @@ spec:
       - name: main
         image: localhost:5000/pleo/invoice-app:latest
         imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
         runAsGroup: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: invoice-app
+spec:
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+    nodePort: 30080
+  selector:
+    app: invoice-app
+  type: NodePort
