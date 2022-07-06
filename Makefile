@@ -3,6 +3,9 @@ REGISTRY=localhost:5000/pleo
 deploy: build_and_push
 	./deploy.sh
 
+deploy_no_build:
+	./deploy.sh
+
 create_k8s_cluster:
 	./create-cluster-with-registry.sh
 
