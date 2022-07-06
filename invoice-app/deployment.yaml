@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +15,9 @@ spec:
     spec:
       containers:
       - name: main
-        image: invoice-app:latest
-        imagePullPolicy: IfNotPresent
+        image: localhost:5000/pleo/invoice-app:latest
+        imagePullPolicy: Always
       securityContext:
         runAsNonRoot: true
+        runAsUser: 2000
+        runAsGroup: 3000
