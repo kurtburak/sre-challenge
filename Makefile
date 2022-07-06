@@ -9,7 +9,7 @@ deploy_no_build:
 create_k8s_cluster:
 	./create-cluster-with-registry.sh
 
-delete_k8s_cluster:
+destroy:
 	kind delete cluster --name pleo
 
 build_and_push:
