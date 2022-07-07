@@ -10,7 +10,7 @@ APPS=(payment-provider invoice-app)
 
 # Create prod namesapce if not exist
 kubectl get ns $NAMESPACE 2> /dev/null
-if [ $? -ne 0 ]; then
+if [ "$?" != "0" ]; then
   kubectl create ns $NAMESPACE
 fi
 
