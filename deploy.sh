@@ -3,7 +3,7 @@
 # this is your part to fill
 # Params
 NAMESPACE=prod
-APPS=(invoice-app payment-provider)
+APPS=(payment-provider invoice-app)
 
 # Build images
 
@@ -18,4 +18,8 @@ fi
 for app in "${APPS[@]}"
 do
   kubectl apply -f ${app}/deployment.yaml -n $NAMESPACE
+  kubectl rollout status deployment ${app} --timeout=60s
+  if [ "$?" != "0" ]; then
+    echo "Deployment of ${app} was failed!"
+  fi
 done
