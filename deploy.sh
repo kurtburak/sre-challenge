@@ -5,9 +5,6 @@
 NAMESPACE=prod
 APPS=(payment-provider invoice-app)
 
-# Build images
-
-
 # Create prod namesapce if not exist
 kubectl get ns $NAMESPACE 2> /dev/null
 if [ "$?" != "0" ]; then
