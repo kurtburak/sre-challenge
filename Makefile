@@ -24,3 +24,6 @@ build_and_push: create_k8s_cluster
 
 	# Push ${REGISTRY}/payment-provider
 	docker push ${REGISTRY}/payment-provider
+
+test:
+	./test.sh
